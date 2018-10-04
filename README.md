@@ -57,33 +57,4 @@ class Foo:
 
 To this markdown:
 
-# *Class* `Foo`
-
-This is a foo.
-
-Do not cross the foo streams!
-
------
-# *Function* Foo#`__init__(self)`
-
-
-Create a new foo.
-
------
-# *Function* Foo#`cross_streams(self, other_foo: Foo = None)`
-
-
-Cross the streams of this foo with another foo.
-
-If you do this, it will throw an error.
-
-## Arguments
-> - **other_foo** (`Foo`: `None`): The foo with which you'd like to cross streams
-
-## Returns
-`None`
-
-## Raises
-> - **FooError**: Raised if you cross the streams.
-
-
+![image](https://user-images.githubusercontent.com/693511/46500667-5f04dc80-c7f1-11e8-8ea5-63b5466ba72c.png)
