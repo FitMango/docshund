@@ -1,4 +1,4 @@
-<!-- <p align=center><img align=center src'logo.png' width=200 /></p> -->
+<p align=center><img align=center src='docshund.png' width=200 /></p>
 <h3 align=center>d o c s h u n d</h3>
 <h6 align=center>simple code documentation generation</h6>
 
