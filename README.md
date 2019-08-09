@@ -58,3 +58,6 @@ class Foo:
 To this markdown:
 
 ![image](https://user-images.githubusercontent.com/693511/46500667-5f04dc80-c7f1-11e8-8ea5-63b5466ba72c.png)
+
+
+<h6 align=center>Made with ❤️ at <a href="https://github.com/fitmango">🥭</a></h6>
