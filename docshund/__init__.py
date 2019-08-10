@@ -1,4 +1,10 @@
 #!/usr/bin/env python3
+"""
+A module for building documentation in Markdown form from a Python file.
+
+Simple, no-frills. Uses Google-style docstrings.
+"""
+
 from typing import List
 
 import re
@@ -12,14 +18,38 @@ _DOCUMENTED_ENTITY = re.compile(
 
 
 class Section:
+    """
+    A Section represents the content of a single Python entity.
+
+    This includes classes, functions, and class methods.
+    """
 
     def __init__(self, title: str = None, contents=None) -> None:
         """
+        Create a new Section with a title and content string.
+
+        Arguments:
+            title (str: None): The title of the section. Optional
+            contents (str: None): The contents of the section. Optional
+
+        Returns:
+            None
+
         """
         self.title = title
         self.contents = contents
 
     def to_markdown(self) -> str:
+        """
+        Convert the section to Markdown.
+
+        Arguments:
+            None
+
+        Returns:
+            str: A markdown representation of the section.
+
+        """
         md = ""
 
         if self.title:
@@ -32,18 +62,54 @@ class Section:
 
 
 class Report:
+    """
+    A complete report of a Python file, containing all Sections.
+
+    """
 
     def __init__(self, sections: List[Section] = None) -> None:
         """
+        Create a new Report with a list of Sections.
+
+        Arguments:
+            sections (List[Section]: None): An optional list of sections to
+                include in the report.
+
+        Returns:
+            None
+
         """
         if sections is None:
             sections = []
         self.sections = sections
 
     def to_markdown(self) -> str:
+        """
+        Convert the entire report to Markdown.
+
+        Arguments:
+            None
+
+        Returns:
+            str: A markdown representation of the report.
+
+        """
         return "\n".join([s.to_markdown() for s in self.sections])
 
     def add_section(self, section: Section, pos: int = -1) -> None:
+        """
+        Add a section to the report, optionally at a given position.
+
+        Arguments:
+            section (Section): The section to insert
+            pos (int: -1): The index at which to insert the new section. If
+                none is provided, the default is to add the section to the
+                end of the report.
+
+        Returns:
+            None
+
+        """
         if pos:
             self.sections.insert(pos, section)
         else:
@@ -51,10 +117,26 @@ class Report:
 
 
 class Docshund:
+    """
+    The high-level class for generating documentation.
+
+    This is what you should call if you are trying to generate documentation
+    programmatically (or from the command line).
+    """
 
     def __init__(self, **kwargs) -> None:
         """
         Create a new Docshund documentation engine.
+
+        Arguments:
+            language (None): The language to use. This is currently not used,
+                but will ultimately provide support for different programming
+                languages than Python.
+            indent (str: "    "): The default indentation level for the file.
+                Defaults to four spaces.
+
+        Returns:
+            None
 
         """
 
@@ -64,18 +146,36 @@ class Docshund:
             pass
             # self._infer_language()
 
-        self._indent_string = (" " * 4)
+        self._indent_string = kwargs.get("indent", (" " * 4))
 
     def _get_indent_level(self, line: str) -> int:
         """
         Return the indent level, based upon the left spacing.
+
+        Arguments:
+            line (str): The line to guess indentation for.
+
+        Returns:
+            int: The guessed indentation level of the line of code
+
         """
         return len(line) - len(line.lstrip(self._indent_string))
 
     def _clean_docstring(self, docstring: str) -> List[str]:
+        """
+        Clean a docstring, reducing indentation where necessary.
+
+        Arguments:
+            docstring (str): The complete docstring from the code src
+
+        Returns:
+            List[str]: A list of strings, one for each line of the cleaned
+                docstring output.
+
+        """
         doclines = docstring.split("\n")
-        base_indentation = self._get_indent_level(doclines[0]) if self._get_indent_level(
-            doclines[0]) else self._get_indent_level(doclines[1])
+        base_indentation = self._get_indent_level(doclines[0]) if (self._get_indent_level(
+            doclines[0])) else self._get_indent_level(doclines[1])
         doclines = [d[base_indentation:] for d in doclines]
 
         reflowed: List[str] = []
@@ -93,7 +193,13 @@ class Docshund:
 
     def parse_docstring(self, docstring: str) -> str:
         """
-        Renders a single docstring.
+        Parse a single docstring, converting from original text to Markdown.
+
+        Arguments:
+            docstring (str): The docstring from the code src
+
+        Returns:
+            str: The parsed markdown output
 
         """
         report = []
