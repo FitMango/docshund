@@ -13,7 +13,7 @@ _DOCUMENTED_ENTITY = re.compile(
 
 class Section:
 
-    def __init__(self, title: str = None, contents = None) -> None:
+    def __init__(self, title: str = None, contents=None) -> None:
         """
         """
         self.title = title
@@ -39,7 +39,6 @@ class Report:
         if sections is None:
             sections = []
         self.sections = sections
-
 
     def to_markdown(self) -> str:
         return "\n".join([s.to_markdown() for s in self.sections])
@@ -75,7 +74,8 @@ class Docshund:
 
     def _clean_docstring(self, docstring: str) -> List[str]:
         doclines = docstring.split("\n")
-        base_indentation = self._get_indent_level(doclines[0]) if self._get_indent_level(doclines[0]) else self._get_indent_level(doclines[1])
+        base_indentation = self._get_indent_level(doclines[0]) if self._get_indent_level(
+            doclines[0]) else self._get_indent_level(doclines[1])
         doclines = [d[base_indentation:] for d in doclines]
 
         reflowed: List[str] = []
@@ -105,10 +105,11 @@ class Docshund:
             is_header = list(re.finditer(_HEADER, line))
             is_arg = list(re.finditer(_ARGUMENT, line))
             if len(is_header):
-                report.append("## " + is_header[0].groups()[0])
+                report.append("### " + is_header[0].groups()[0])
             elif len(is_arg):
                 varname, type, default, description = is_arg[0].groups()
-                report.append(f"> - **{varname}** (`{type}`: `{default}`): {description}")
+                report.append(
+                    f"> - **{varname}** (`{type}`: `{default}`): {description}")
 
             else:
                 report.append(line)
@@ -135,9 +136,8 @@ class Docshund:
                 "class": "Class"
             }[type]
             documentation.append("\n".join([
-                f"# *{type}* `{signature}`",
+                f"## *{type}* `{signature}`",
                 "",
                 self.parse_docstring(doc)
             ]))
-        return "\n-----\n".join(documentation)
-
+        return "\n\n".join(documentation)
