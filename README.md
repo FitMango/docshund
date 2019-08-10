@@ -5,7 +5,7 @@
 <a href="https://pypi.org/project/docshund/"><img alt="PyPI" src="https://img.shields.io/pypi/v/docshund.svg?logo=python&logoColor=orange&style=for-the-badge"></a>
 </p>
 
-> NOTE: Docshund is in alpha and is not yet suitable for production workloads. Please exercise caution when using.
+> NOTE: Docshund is in alpha and may not yet be suitable for production workloads. Please exercise caution when using. (We'll try not to break everything if you promise not to expect it not to break everything.)
 
 # Installation
 
