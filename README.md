@@ -59,5 +59,16 @@ To this markdown:
 
 ![image](https://user-images.githubusercontent.com/693511/46500667-5f04dc80-c7f1-11e8-8ea5-63b5466ba72c.png)
 
+# Generating documentation for this repository
+
+The reference documentation for this repository was generated using the following command:
+
+```shell
+docshund docshund/__init__.py > docs/Reference.md
+```
+
+You might say we... 😎 ate our own dogfood.
+
+---
 
 <h6 align=center>Made with ❤️ at <a href="https://github.com/fitmango">🥭</a></h6>
