@@ -12,9 +12,10 @@ import re
 _HEADER = r"\b(\w+):$"
 _ARGUMENT = r"\b(\S+)(?:\s\((\S+)(?:\:\s(\S+))?\))?:\s+(.*)"
 _DOCUMENTED_ENTITY = re.compile(
-    r'''(class|def) (.+)\:\n\s+"""((?:.*\n)+?\s*)"""$''',
-    re.MULTILINE
+    r'''(class|def) (.+)\:\n\s+"""((?:.*\n)+?\s*)"""$''', re.MULTILINE
 )
+
+__version__ = "0.1.0"
 
 
 class Section:
@@ -174,8 +175,11 @@ class Docshund:
 
         """
         doclines = docstring.split("\n")
-        base_indentation = self._get_indent_level(doclines[0]) if (self._get_indent_level(
-            doclines[0])) else self._get_indent_level(doclines[1])
+        base_indentation = (
+            self._get_indent_level(doclines[0])
+            if (self._get_indent_level(doclines[0]))
+            else self._get_indent_level(doclines[1])
+        )
         doclines = [d[base_indentation:] for d in doclines]
 
         reflowed: List[str] = []
@@ -215,7 +219,8 @@ class Docshund:
             elif len(is_arg):
                 varname, type, default, description = is_arg[0].groups()
                 report.append(
-                    f"> - **{varname}** (`{type}`: `{default}`): {description}")
+                    f"> - **{varname}** (`{type}`: `{default}`): {description}"
+                )
 
             else:
                 report.append(line)
@@ -237,13 +242,8 @@ class Docshund:
         entities = list(re.finditer(_DOCUMENTED_ENTITY, document))
         for e in entities:
             type, signature, doc = e.groups()
-            type = {
-                "def": "Function",
-                "class": "Class"
-            }[type]
-            documentation.append("\n".join([
-                f"## *{type}* `{signature}`",
-                "",
-                self.parse_docstring(doc)
-            ]))
+            type = {"def": "Function", "class": "Class"}[type]
+            documentation.append(
+                "\n".join([f"## *{type}* `{signature}`", "", self.parse_docstring(doc)])
+            )
         return "\n\n".join(documentation)

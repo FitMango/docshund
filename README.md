@@ -7,9 +7,7 @@
 # Installation
 
 ```python
-git clone https://github.com/FitMango/docshund
-cd docshund
-pip3 install -U .
+pip3 install docshund
 ```
 
 # Usage

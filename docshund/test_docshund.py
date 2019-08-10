@@ -34,7 +34,6 @@ class Blah:
 
 
 class TestDocshund(unittest.TestCase):
-
     def test_clean_linebreaks(self):
         ds = """\
         This is a docstring.
@@ -50,9 +49,10 @@ class TestDocshund(unittest.TestCase):
                 "This is a docstring.",
                 "",
                 "Here is a long description that spans many lines.",
-                ""
-            ]
+                "",
+            ],
         )
+
     def test_description_only_docstring(self):
         ds = """\
         This is a single-line description.
@@ -66,7 +66,6 @@ class TestDocshund(unittest.TestCase):
             test (int: 1): Frogs!
         """
 
-
         D = Docshund()
         self.assertEqual(
             D.parse_docstring(ds),
@@ -77,13 +76,10 @@ class TestDocshund(unittest.TestCase):
             "But there's another part.\n"
             "\n"
             "# Arguments\n"
-            "\t- test (`int`: `1`): Frogs!\n"
+            "\t- test (`int`: `1`): Frogs!\n",
         )
 
     def test_parse_document(self):
         D = Docshund()
         parsed_doc = D.parse_document(TEST_FILE)
-        self.assertIn(
-            "Create a new Blah",
-            parsed_doc
-        )
+        self.assertIn("Create a new Blah", parsed_doc)

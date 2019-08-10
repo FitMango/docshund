@@ -15,10 +15,10 @@ from setuptools import find_packages, setup, Command
 NAME = 'docshund'
 DESCRIPTION = 'docshund: a doc dog.'
 URL = 'https://github.com/FitMango/docshund'
-EMAIL = 'foss@fitmango.com'
+EMAIL = 'opensource@fitmango.com'
 AUTHOR = 'Jordan Matelsky'
 REQUIRES_PYTHON = '>=3.6.0'
-VERSION = "0.0.1"
+VERSION = "0.1.0"
 
 # What packages are required for this module to be executed?
 REQUIRED = [
@@ -98,11 +98,11 @@ setup(
         'dev': DEVELOPING_REQS,
     },
     include_package_data=True,
-    license='MIT',
+    license='Apache License 2.0',
     classifiers=[
         # Trove classifiers
         # Full list: https://pypi.python.org/pypi?%3Aaction=list_classifiers
-        'License :: OSI Approved :: MIT License',
+        'License :: OSI Approved :: Apache Software License',
         'Programming Language :: Python',
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.6',
