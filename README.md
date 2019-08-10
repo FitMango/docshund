@@ -1,6 +1,9 @@
 <p align=center><img align=center src='docshund.png' width=500 /></p>
 <h3 align=center>d o c s h u n d</h3>
 <h6 align=center>simple code documentation generation</h6>
+<p align=center>
+<a href="https://pypi.org/project/docshund/"><img alt="PyPI" src="https://img.shields.io/pypi/v/docshund.svg?logo=python&logoColor=orange&style=for-the-badge"></a>
+</p>
 
 > NOTE: Docshund is in alpha and is not yet suitable for production workloads. Please exercise caution when using.
 
