@@ -132,4 +132,24 @@ You might say we... 😎 ate our own dogfood.
 
 ---
 
+## Legal
+
+Licensed under Apache 2.0. Reach out to opensource@fitmango.com with questions.
+
+> Copyright 2019 FitMango.
+>
+> Licensed under the Apache License, Version 2.0 (the "License");
+> you may not use this codebase except in compliance with the License.
+> You may obtain a copy of the License at
+>
+> http://www.apache.org/licenses/LICENSE-2.0
+>
+> Unless required by applicable law or agreed to in writing, software
+> distributed under the License is distributed on an "AS IS" BASIS,
+> WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+> See the License for the specific language governing permissions and
+> limitations under the License.
+
+---
+
 <h6 align=center>Made with ❤️ at <a href="https://github.com/fitmango">🥭</a></h6>
