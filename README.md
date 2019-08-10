@@ -3,6 +3,8 @@
 <h6 align=center>simple code documentation generation</h6>
 <p align=center>
 <a href="https://pypi.org/project/docshund/"><img alt="PyPI" src="https://img.shields.io/pypi/v/docshund.svg?logo=python&logoColor=orange&style=for-the-badge"></a>
+    <img src="https://img.shields.io/github/issues/FitMango/docshund.svg?style=for-the-badge" />
+<img src="https://img.shields.io/github/license/FitMango/docshund.svg?style=for-the-badge" />
 </p>
 
 > NOTE: Docshund is in alpha and may not yet be suitable for production workloads. Please exercise caution when using. (We'll try not to break everything if you promise not to expect it not to break everything.)
