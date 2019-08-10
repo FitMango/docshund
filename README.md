@@ -1,4 +1,4 @@
-<!-- <p align=center><img align=center src'logo.png' width=200 /></p> -->
+<p align=center><img align=center src='docshund.png' width=500 /></p>
 <h3 align=center>d o c s h u n d</h3>
 <h6 align=center>simple code documentation generation</h6>
 
@@ -58,3 +58,6 @@ class Foo:
 To this markdown:
 
 ![image](https://user-images.githubusercontent.com/693511/46500667-5f04dc80-c7f1-11e8-8ea5-63b5466ba72c.png)
+
+
+<h6 align=center>Made with ❤️ at <a href="https://github.com/fitmango">🥭</a></h6>
