@@ -9,6 +9,12 @@
 
 > NOTE: Docshund is in alpha and may not yet be suitable for production workloads. Please exercise caution when using. (We'll try not to break everything if you promise not to expect it not to break everything.)
 
+# Why
+
+We were tired of complex, long-running doc-generators. In some cases, we wanted to generate documentation for our source but didn't want to install _all_ of our libraries' dependencies just to make a small change to a README. Docshund is the answer to this problem. Docshund doesn't require pip-installation of your package and, even for large projects, runs in just a handful of milliseconds. 
+
+On the flip-side, Docshund does not have the same featurelist as many other libraries, and Docshund also has a hard time jumping up onto your couch without help.
+
 # Installation
 
 ```python
