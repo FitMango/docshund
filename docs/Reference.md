@@ -12,7 +12,8 @@ This includes classes, functions, and class methods.
 Create a new Section with a title and content string.
 
 ### Arguments
-> - **title** (`str`: `None`): The title of the section. Optional     contents (str: None): The contents of the section. Optional
+> - **title** (`str`: `None`): The title of the section. Optional
+> - **contents** (`str`: `None`): The contents of the section. Optional
 
 ### Returns
     None
@@ -72,7 +73,8 @@ Convert the entire report to Markdown.
 Add a section to the report, optionally at a given position.
 
 ### Arguments
-> - **section** (`Section`: `None`): The section to insert     pos (int: -1): The index at which to insert the new section. If
+> - **section** (`Section`: `None`): The section to insert
+> - **pos** (`int`: `-1`): The index at which to insert the new section. If
         none is provided, the default is to add the section to the         end of the report.
 
 ### Returns

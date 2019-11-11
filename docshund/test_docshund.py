@@ -24,6 +24,7 @@ class Blah:
 
         Arguments:
             friend (Blah: None): The friend to whom this Blah should be engaged
+            use_ring (boolean: True): Whether to use a ring
 
         Returns:
             Blah: The new combined blah
@@ -75,11 +76,23 @@ class TestDocshund(unittest.TestCase):
             "\n"
             "But there's another part.\n"
             "\n"
-            "# Arguments\n"
-            "\t- test (`int`: `1`): Frogs!\n",
+            "### Arguments\n"
+            "> - **test** (`int`: `1`): Frogs!\n",
         )
 
     def test_parse_document(self):
         D = Docshund()
         parsed_doc = D.parse_document(TEST_FILE)
         self.assertIn("Create a new Blah", parsed_doc)
+
+    def test_parse_arguments(self):
+        D = Docshund()
+        parsed_doc = D.parse_document(TEST_FILE)
+
+        self.assertIn(
+            "> - **friend** (`Blah`: `None`): The friend to whom this Blah should be engaged",
+            parsed_doc,
+        )
+        self.assertIn(
+            "> - **use_ring** (`boolean`: `True`): Whether to use a ring", parsed_doc
+        )

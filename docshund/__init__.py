@@ -185,7 +185,14 @@ class Docshund:
         reflowed: List[str] = []
         last_indentation = base_indentation
         for line in doclines:
-            if line != "" and self._get_indent_level(line) == last_indentation:
+            if (
+                # Line has contents:
+                line != ""
+                # Line is indented the same as previous:
+                and self._get_indent_level(line) == last_indentation
+                # Line is not argument-like:
+                and len(list(re.finditer(_ARGUMENT, line))) == 0
+            ):
                 reflowed[-1] += " " + line
             else:
                 reflowed.append(line)
