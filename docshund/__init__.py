@@ -15,7 +15,7 @@ _DOCUMENTED_ENTITY = re.compile(
     r'''(class|def) (.+)\:\n\s+"""((?:.*\n)+?\s*)"""$''', re.MULTILINE
 )
 
-__version__ = "0.1.0"
+__version__ = "0.1.1"
 
 
 class Section:
