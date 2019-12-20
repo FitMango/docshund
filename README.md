@@ -27,6 +27,16 @@ pip3 install docshund
 docshund code.py > documentation.md
 ```
 
+Or document an entire module with:
+
+```shell
+docshund .
+```
+
+```shell
+docshund /path/to/module
+```
+
 ## What she do:
 
 Go from this:
