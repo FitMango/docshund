@@ -7,6 +7,10 @@ TEST_FILE = '''
 class Blah:
     """
     This is a class.
+
+    >>> doctest.works()
+    True
+
     """
 
     def __init__(self):
@@ -95,4 +99,12 @@ class TestDocshund(unittest.TestCase):
         )
         self.assertIn(
             "> - **use_ring** (`boolean`: `True`): Whether to use a ring", parsed_doc
+        )
+
+    def test_parse_doctest(self):
+        D = Docshund()
+        parsed_doc = D.parse_document(TEST_FILE)
+
+        self.assertIn(
+            "\\>>>", parsed_doc,
         )

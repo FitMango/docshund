@@ -1,0 +1,4 @@
+# CHANGELOG
+
+-   **0.1.3** (Unreleased)
+    -   Correctly handle the `>>>` doctest syntax in docstrings (#7)

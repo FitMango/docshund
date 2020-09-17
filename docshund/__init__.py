@@ -200,7 +200,7 @@ class Docshund:
                     last_indentation = -1
                 else:
                     last_indentation = self._get_indent_level(line)
-        return reflowed
+        return [(line).replace(">>>", "\>>>") for line in reflowed]
 
     def parse_docstring(self, docstring: str) -> str:
         """
@@ -219,6 +219,7 @@ class Docshund:
         doclines = self._clean_docstring(docstring)
 
         for line in doclines:
+
             is_header = list(re.finditer(_HEADER, line))
             is_arg = list(re.finditer(_ARGUMENT, line))
             if len(is_header):
