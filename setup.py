@@ -18,10 +18,10 @@ URL = "https://github.com/FitMango/docshund"
 EMAIL = "opensource@fitmango.com"
 AUTHOR = "Jordan Matelsky"
 REQUIRES_PYTHON = ">=3.6.0"
-VERSION = "0.1.2"
+VERSION = "0.1.3"
 
 # What packages are required for this module to be executed?
-REQUIRED = ['click']
+REQUIRED = ["click"]
 
 # What packages are suggested for doing development?
 DEVELOPING_REQS = ["pytest", "pylint"]
