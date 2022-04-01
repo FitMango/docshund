@@ -37,6 +37,33 @@ class Blah:
 
 '''
 
+MULTILINE_FUNCTION = '''
+
+def foo(
+    bar: int,
+    baz: str
+):
+    """
+    This function foos a bar for you.
+
+    Optionally also foos a baz.
+
+    """
+    pass
+
+'''
+
+SINGLELINE_FUNCTION = '''
+def foo(bar: int,baz: str):
+    """
+    This function foos a bar for you.
+
+    Optionally also foos a baz.
+
+    """
+    pass
+'''
+
 
 class TestDocshund(unittest.TestCase):
     def test_clean_linebreaks(self):
@@ -106,5 +133,15 @@ class TestDocshund(unittest.TestCase):
         parsed_doc = D.parse_document(TEST_FILE)
 
         self.assertIn(
-            "\\>>>", parsed_doc,
+            "\\>>>",
+            parsed_doc,
+        )
+
+    def test_multiline_function(self):
+        D = Docshund()
+        parsed_doc = D.parse_document(MULTILINE_FUNCTION)
+
+        self.assertIn(
+            "foo (bar: int, baz: str)",
+            parsed_doc,
         )

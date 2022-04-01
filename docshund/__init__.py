@@ -12,7 +12,9 @@ import re
 _HEADER = r"\b(\w+):$"
 _ARGUMENT = r"\b(\S+)(?:\s\((\S+)(?:\:\s(\S+))?\))?:\s+(.*)"
 _DOCUMENTED_ENTITY = re.compile(
-    r'''(class|def) (.+)\:\n\s+"""((?:.*\n)+?\s*)"""$''', re.MULTILINE
+    r'''(class|def) (.+?)(\((.*?)\))?:\n\s+"""((?:.*?\n)+?\s*)"""$''',
+    # re.MULTILINE and re.DOTALL
+    re.MULTILINE | re.DOTALL,
 )
 
 __version__ = "0.1.1"
@@ -249,9 +251,29 @@ class Docshund:
         documentation = []
         entities = list(re.finditer(_DOCUMENTED_ENTITY, document))
         for e in entities:
-            type, signature, doc = e.groups()
+            grps = e.groups()
+            if len(grps) == 5:
+                type, signature, _, args, doc = e.groups()
             type = {"def": "Function", "class": "Class"}[type]
-            documentation.append(
-                "\n".join([f"## *{type}* `{signature}`", "", self.parse_docstring(doc)])
-            )
+            if type == "Function":
+                fnarg = " ".join(args.split())
+                documentation.append(
+                    "\n".join(
+                        [
+                            f"### *{type}* `{signature} ({fnarg})`",
+                            "",
+                            self.parse_docstring(doc),
+                        ]
+                    )
+                )
+            else:
+                documentation.append(
+                    "\n".join(
+                        [
+                            f"## *{type}* `{signature}`",
+                            "",
+                            self.parse_docstring(doc),
+                        ]
+                    )
+                )
         return "\n\n".join(documentation)
