@@ -17,7 +17,7 @@ _DOCUMENTED_ENTITY = re.compile(
     re.MULTILINE | re.DOTALL,
 )
 
-__version__ = "0.1.1"
+__version__ = "0.1.3"
 
 
 class Section:
